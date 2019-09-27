@@ -152,6 +152,114 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Authorization-Code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/27/Authorization-Code/">Authorization Code</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/27/Authorization-Code/" class="archive-article-date">
+  	<time datetime="2019-09-27T07:19:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Authorization-Code"><a href="#Authorization-Code" class="headerlink" title="Authorization Code"></a>Authorization Code</h2><ol>
+<li>授权码是OAuth2中最常用的一种授权许可类型，要求第三方应用需要有可公开访问的服务器来接收授权许可code，即上述中所说的回调地址。</li>
+</ol>
+<p>引用 blackheart 博主的流程图<br><img src="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/authorization.png" alt></p>
+<ol>
+<li>授权码请求<br>第三方应用使用用户代理（浏览器，或自己的服务器）访问微信授权服务器提供的一个url，该url就是提供获取授权码的url，第三方应用需要传递一下参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">response_type：（必传）此时为&quot;code&quot;     </span><br><span class="line">app_id：（必传）微信服务器下发的标识第三方应用的</span><br><span class="line">redirect_uri：（必传）授权成功后的重定向地址</span><br><span class="line">scope：（可选）标识授权范围</span><br><span class="line">state：（推荐）第三方应用提供的一个字符串，微信授权服务器会原样返回</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>示例请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /authorize?response_type=code&amp;app_id=wx201800a28199&amp;state=wilson&amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Foauth2&amp;scope=user,photo HTTP/1.1</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>授权码返回<br>微信授权服务器验证第三方应用再上一步中传递的参数，确认无误后会提供一个页面给微信用户a登录或者手动确认授权操作，操作超过后微信授权服务器会根据redirect_uri重定向到该地址，并携带下发的授权许可code</li>
+</ol>
+<p>类似重定向地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 302 Found</span><br><span class="line">Location: https://client.example.com/oauth2?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=wilson</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>访问令牌请求<br>第三方应用根据上一步拿到的授权码code以及app_id，重定向地址等参数，再次请求微信授权服务器，请求获取访问令牌access_token<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grant_type：（必传）值为&quot;authorization_code&quot;</span><br><span class="line">code：（必传）值为上一步获取到的授权码code</span><br><span class="line">redirect_uri：（必传）必须和第一步获取授权码中的一致</span><br><span class="line">app_id：（必传）标识第三方应用id</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>请求示例如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST /token HTTP/1.1</span><br><span class="line">Host: server.example.com</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA&amp;app_id=wx201800a28199&amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Foauth2</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>访问令牌返回<br>微信授权服务器返回访问令牌和一些刷新令牌，令牌过期时间等信息给到第三方应用</li>
+</ol>
+<p>返回示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Type: application/json;charset=UTF-8</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">   &quot;access_token&quot;:&quot;2YotnFZFEjr1zCsicMWpAA&quot;,</span><br><span class="line">   &quot;token_type&quot;:&quot;example&quot;,</span><br><span class="line">   &quot;expires_in&quot;:3600,</span><br><span class="line">   &quot;refresh_token&quot;:&quot;tGzv3JOkF0XG5Qx2TlKWIA&quot;,</span><br><span class="line">   &quot;example_parameter&quot;:&quot;example_value&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>受限资源获取<br>第三方应用根据访问令牌去微信资源服务器获取微信用户a的基本信息。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java分类//" class="article-tag-list-link color2">java分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/27/Authorization-Code/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-初识oauth2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
