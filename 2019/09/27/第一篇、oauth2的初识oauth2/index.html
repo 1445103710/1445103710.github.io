@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | Hexo</title>
+  <title>初识oauth2 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="oauth2的简单认识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/09/26/hello-world/index.html">
+<meta property="og:title" content="初识oauth2">
+<meta property="og:url" content="http://yoursite.com/2019/09/27/第一篇、oauth2的初识oauth2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="oauth2的简单认识">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-26T11:57:58.253Z">
+<meta property="og:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/image.png">
+<meta property="og:updated_time" content="2019-09-27T07:40:36.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="初识oauth2">
+<meta name="twitter:description" content="oauth2的简单认识">
+<meta name="twitter:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/image.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -154,39 +156,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-第一篇、oauth2的初识oauth2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      初识oauth2
     </h1>
   
 
         
-        <a href="/2019/09/26/hello-world/" class="archive-article-date">
-  	<time datetime="2019-09-26T04:24:43.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
+        <a href="/2019/09/27/第一篇、oauth2的初识oauth2/" class="archive-article-date">
+  	<time datetime="2019-09-27T07:08:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">快点看快点快点快点开</span><br><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h2 id="oauth2"><a href="#oauth2" class="headerlink" title="oauth2"></a>oauth2</h2><p>oauth2是开放授权的一个标准，旨在让用户允许第三方应用去访问改用户在某服务器中的特定私有资源，而可以不提供其在某服务器的账号密码给到第三方应用</p>
+<a id="more"></a>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>可以将OAuth2分为四个角色：</p>
+<ol>
+<li>Resource Owner：资源所有者 即上述中的微信用户</li>
+<li>Resource Server：资源服务器 即上述中的微信服务器，提供微信用户基本信息给到第三方应用</li>
+<li>Client：第三方应用客户端 即上述中你公司正在开发的第三方应用</li>
+<li>Authorication Server：授权服务器 该角色可以理解为管理其余三者关系的中间层</li>
+</ol>
+<p>不难看出，OAuht2 解决问题的关键在于使用授权服务器提供一个访问凭据给到第三方应用，让第三方应用可以在不知道资源所有者在资源服务器上的账号和密码的情况下，能获取到资源所有者在资源服务器上的受保护资源，这里的受保护资源就是微信用户的姓名以及头像等信息。</p>
+<p>OAuth2 授权流程<br><img src="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/image.png" alt></p>
+<p>OAuth2中的有哪些授权许可<br>前面的示例中，第三方应用需要首先请求授权服务器以获取到授权许可code，再通过授权许可code去请求访问令牌，OAuth2中定义了四种许可类型以扩展OAuth2的机制<br>授权码 Authorization Code<br>隐式许可 Implicit<br>资源所有者密码凭证 Resource Owner Password Credentials<br>客户端凭证 Client Credentials</p>
 
       
 
@@ -217,6 +220,17 @@
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java分类//" class="article-tag-list-link color2">java分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -266,7 +280,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/26/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/27/第一篇、oauth2的初识oauth2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -280,11 +294,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/09/27/初识oauth2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/09/27/第二篇、oauth2的Authorization-Code/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          初识oauth2
+          Authorization Code
         
       </div>
     </a>
