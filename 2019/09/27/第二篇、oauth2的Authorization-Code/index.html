@@ -16,7 +16,7 @@
 <meta property="og:description" content="Authorization Code">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/authorization.png">
-<meta property="og:updated_time" content="2019-09-27T07:42:59.489Z">
+<meta property="og:updated_time" content="2019-09-27T07:44:36.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第二篇、oauth2 [Authorization-Code]">
 <meta name="twitter:description" content="Authorization Code">
@@ -179,8 +179,9 @@
         <h2 id="Authorization-Code"><a href="#Authorization-Code" class="headerlink" title="Authorization Code"></a>Authorization Code</h2><ol>
 <li>授权码是OAuth2中最常用的一种授权许可类型，要求第三方应用需要有可公开访问的服务器来接收授权许可code，即上述中所说的回调地址。</li>
 </ol>
-<p>引用 blackheart 博主的流程图<br><img src="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/authorization.png" alt></p>
 <a id="more"></a>
+
+<p>引用 blackheart 博主的流程图<br><img src="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/authorization.png" alt></p>
 <ol>
 <li>授权码请求<br>第三方应用使用用户代理（浏览器，或自己的服务器）访问微信授权服务器提供的一个url，该url就是提供获取授权码的url，第三方应用需要传递一下参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">response_type：（必传）此时为&quot;code&quot;     </span><br><span class="line">app_id：（必传）微信服务器下发的标识第三方应用的</span><br><span class="line">redirect_uri：（必传）授权成功后的重定向地址</span><br><span class="line">scope：（可选）标识授权范围</span><br><span class="line">state：（推荐）第三方应用提供的一个字符串，微信授权服务器会原样返回</span><br></pre></td></tr></table></figure>
 
@@ -318,7 +319,7 @@
   
   
     <a href="/2019/09/27/第一篇、oauth2的初识oauth2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">第一篇oauth2 [初识oauth2]</div>
+      <div class="article-nav-title">第一篇、oauth2 [初识oauth2]</div>
       <i class="icon-circle-right"></i>
     </a>
   
