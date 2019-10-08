@@ -16,7 +16,9 @@
 <meta property="og:description" content="OSI七层协议大白话解读">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-fd67af0a.png">
-<meta property="og:updated_time" content="2019-10-08T13:23:41.766Z">
+<meta property="og:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-5b304d82.png">
+<meta property="og:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-22d0675f.png">
+<meta property="og:updated_time" content="2019-10-08T15:10:34.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第三篇、OSI七层协议大白话解读">
 <meta name="twitter:description" content="OSI七层协议大白话解读">
@@ -181,15 +183,50 @@
 </blockquote>
 <a id="more"></a>
 
-<h3 id="每一层都运行不同的协议。协议是干什么的，协议就是标准。"><a href="#每一层都运行不同的协议。协议是干什么的，协议就是标准。" class="headerlink" title="每一层都运行不同的协议。协议是干什么的，协议就是标准。"></a>每一层都运行不同的协议。协议是干什么的，协议就是标准。</h3><ol>
+<h3 id="每一层都运行不同的协议。协议是干什么的，协议就是标准。"><a href="#每一层都运行不同的协议。协议是干什么的，协议就是标准。" class="headerlink" title="每一层都运行不同的协议。协议是干什么的，协议就是标准。"></a>每一层都运行不同的协议。协议是干什么的，协议就是标准。</h3><ul>
 <li>实际上还有人把它划成五层、四层:<ul>
 <li>七层划分为：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层。</li>
 <li>五层划分为：应用层、传输层、网络层、数据链路层、物理层。</li>
 <li>四层划分为：应用层、传输层、网络层、网络接口层。<br><img src="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-fd67af0a.png" alt></li>
 </ul>
 </li>
+</ul>
+<ol>
+<li><p>物理层：</p>
+<blockquote>
+<p>字面意思解释：物理传输、硬件、物理特性。在深圳的你与北京的朋友聊天，你的电脑必须要能上网，物理体现是什么？是不是接一根网线，插个路由器，北京的朋友那边是不是也有根网线，也得插个路由器。也就是说计算机与计算机之间的通信，必须要有底层物理层方面的连通，就类似于你打电话，中间是不是必须得连电话线。</p>
+</blockquote>
+</li>
+<li><p>数据链路层</p>
+<blockquote>
+<p>数据链路层就是来对电信号来做分组的。以前每个公司都有自己的分组方式，非常的乱，后来形成了统一的标准（标准就是协议），即以太网协议Ethernet。</p>
+<ul>
+<li>每一数据帧分成：报头head和数据data两部分<br><img src="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-5b304d82.png" alt></li>
+<li>head包含：（固定18个字节）<ul>
+<li>发送者（源地址，6个字节）</li>
+<li>接收者（目标地址，6个字节）</li>
+<li>数据类型（6个字节）</li>
+</ul>
+</li>
+<li>data包含：（最短46字节，最长1500字节）<ul>
+<li>数据包的具体内容<br>head长度+data长度=最短64字节，最长1518字节，超过最大限制就分片发送。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>传输层</p>
+<blockquote>
+<p>传输层的由来：网络层的ip帮我们区分子网，以太网层的mac帮我们找到主机，然后大家使用的都是应用程序，你的电脑上可能同时开启qq，暴风影音，等多个应用程序</p>
+</blockquote>
+</li>
+<li><p>应用层</p>
+<blockquote>
+<p>应用层由来：用户使用的都是应用程序，均工作于应用层，互联网是开发的，大家都可以开发自己的应用程序，数据多种多样，必须规定好数据的组织形式 。</p>
+</blockquote>
+</li>
 </ol>
-<p>2.</p>
+<h3 id="OSI七层协议模型"><a href="#OSI七层协议模型" class="headerlink" title="OSI七层协议模型"></a>OSI七层协议模型</h3><p><img src="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-22d0675f.png" alt></p>
 
       
 
