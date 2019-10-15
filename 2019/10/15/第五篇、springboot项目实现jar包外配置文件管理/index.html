@@ -25,12 +25,12 @@
 <meta property="og:site_name" content="yaoyao的小屋">
 <meta property="og:description" content="背景为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。 假设项目以最常规的方式打包成一个整体的jar包部署，即配置文件和第三方依赖包都包含在jar包里，就会有如下两个问题： 问题一：项目运行过程中，要改动配置文件的话需要重新打包并部署。 问题二：多个第三方依">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/assets/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-0d6a5f0f.png">
-<meta property="og:updated_time" content="2019-10-15T06:31:21.557Z">
+<meta property="og:image" content="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/images/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-0d6a5f0f.png">
+<meta property="og:updated_time" content="2019-10-15T06:48:11.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第五篇、springboot项目实现jar包外配置文件管理">
 <meta name="twitter:description" content="背景为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。 假设项目以最常规的方式打包成一个整体的jar包部署，即配置文件和第三方依赖包都包含在jar包里，就会有如下两个问题： 问题一：项目运行过程中，要改动配置文件的话需要重新打包并部署。 问题二：多个第三方依">
-<meta name="twitter:image" content="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/assets/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-0d6a5f0f.png">
+<meta name="twitter:image" content="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/images/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-0d6a5f0f.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/index.html">
   
@@ -367,7 +367,7 @@
 <li><p>springboot核心配置文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Springboot读取核心配置文件（application.properties）的优先级为</span><br><span class="line">Jar包同级目录的config目录</span><br><span class="line">Jar包同级目录</span><br><span class="line">classPath(即resources目录)的config目录</span><br><span class="line">classpath目录</span><br><span class="line">上面是springboot默认去拿自己的核心配置文件的优先级，还有一种最高优先级的方式是项目启动时通过命令的方式指定项目加载核心配置文件，命令如下</span><br><span class="line">java –jar -Dspring.config.location=xxx/xxx/xxxx.properties xxxx.jar</span><br><span class="line">如果Spring Boot在优先级更高的位置找到了配置，那么它会无视优先级更低的配置</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>其他资源配置文件<br>上面描述的Springboot核心文件已经能够提取出jar包外进行管理了，但是还有其他一些业务上的配置文件，如数据源配置文件，公共资源定义配置文件（常量，FTP信息等），quartz定时器，日志等配置文件我们如何去提取出来并确保能在代码中引用到呢<br>我们知道Springboot项目可以通过注解方式来获取相关配置文件，所以我们也是通过注解方式让项目能够引用到jar包外部的配置文件的，如下图：<br><img src="assets/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-0d6a5f0f.png" alt></p>
+<li><p>其他资源配置文件<br>上面描述的Springboot核心文件已经能够提取出jar包外进行管理了，但是还有其他一些业务上的配置文件，如数据源配置文件，公共资源定义配置文件（常量，FTP信息等），quartz定时器，日志等配置文件我们如何去提取出来并确保能在代码中引用到呢<br>我们知道Springboot项目可以通过注解方式来获取相关配置文件，所以我们也是通过注解方式让项目能够引用到jar包外部的配置文件的，如下图：<br><img src="images/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-0d6a5f0f.png" alt></p>
 </li>
 </ol>
 </li>
