@@ -17,24 +17,22 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>第三篇、OSI七层协议大白话解读 | yaoyao的小屋</title>
-  <meta name="description" content="OSI七层协议大白话解读">
+  <title>第五篇、springboot项目实现jar包外配置文件管理 | yaoyao的小屋</title>
+  <meta name="description" content="背景为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。 假设项目以最常规的方式打包成一个整体的jar包部署，即配置文件和第三方依赖包都包含在jar包里，就会有如下两个问题： 问题一：项目运行过程中，要改动配置文件的话需要重新打包并部署。 问题二：多个第三方依">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第三篇、OSI七层协议大白话解读">
-<meta property="og:url" content="http://1445103710.github.io/2019/10/08/第三篇、OSI七层协议大白话解读/index.html">
+<meta property="og:title" content="第五篇、springboot项目实现jar包外配置文件管理">
+<meta property="og:url" content="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/index.html">
 <meta property="og:site_name" content="yaoyao的小屋">
-<meta property="og:description" content="OSI七层协议大白话解读">
+<meta property="og:description" content="背景为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。 假设项目以最常规的方式打包成一个整体的jar包部署，即配置文件和第三方依赖包都包含在jar包里，就会有如下两个问题： 问题一：项目运行过程中，要改动配置文件的话需要重新打包并部署。 问题二：多个第三方依">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-fd67af0a.png">
-<meta property="og:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-5b304d82.png">
-<meta property="og:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-22d0675f.png">
-<meta property="og:updated_time" content="2019-10-15T06:26:28.279Z">
+<meta property="og:image" content="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/assets/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-0d6a5f0f.png">
+<meta property="og:updated_time" content="2019-10-15T06:31:21.557Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第三篇、OSI七层协议大白话解读">
-<meta name="twitter:description" content="OSI七层协议大白话解读">
-<meta name="twitter:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-fd67af0a.png">
+<meta name="twitter:title" content="第五篇、springboot项目实现jar包外配置文件管理">
+<meta name="twitter:description" content="背景为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。 假设项目以最常规的方式打包成一个整体的jar包部署，即配置文件和第三方依赖包都包含在jar包里，就会有如下两个问题： 问题一：项目运行过程中，要改动配置文件的话需要重新打包并部署。 问题二：多个第三方依">
+<meta name="twitter:image" content="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/assets/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-0d6a5f0f.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://1445103710.github.io/2019/10/08/第三篇、OSI七层协议大白话解读/index.html">
+  <link rel="canonical" href="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/index.html">
   
     <link rel="alternate" href="/atom.xml" title="yaoyao的小屋" type="application/atom+xml">
   
@@ -322,14 +320,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-第三篇、OSI七层协议大白话解读" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-第五篇、springboot项目实现jar包外配置文件管理" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      第三篇、OSI七层协议大白话解读
+      第五篇、springboot项目实现jar包外配置文件管理
     </h1>
   
 
@@ -337,75 +335,43 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/10/08/第三篇、OSI七层协议大白话解读/" class="article-date">
-	  <time datetime="2019-10-08T13:11:39.000Z" itemprop="datePublished">2019-10-08</time>
+	<a href="/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/" class="article-date">
+	  <time datetime="2019-10-15T06:24:05.000Z" itemprop="datePublished">2019-10-15</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/网络基础分类/">网络基础分类</a>
+    <a class="article-category-link" href="/categories/linux分类/">linux分类</a>
   </span>
 
         
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/10/08/第三篇、OSI七层协议大白话解读/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><blockquote>
-<p>互联网的本质就是一系列的网络协议，这个协议就叫OSI协议（一系列协议），按照功能不同，分工不同，人为的分层七层。实际上这个七层是不存在的。没有这七层的概念，只是人为的划分而已。区分出来的目的只是让你明白哪一层是干什么用的。</p>
-</blockquote>
-<a id="more"></a>
-
-<h5 id="每一层都运行不同的协议。协议是干什么的，协议就是标准。"><a href="#每一层都运行不同的协议。协议是干什么的，协议就是标准。" class="headerlink" title="每一层都运行不同的协议。协议是干什么的，协议就是标准。"></a>每一层都运行不同的协议。协议是干什么的，协议就是标准。</h5><ul>
-<li>实际上还有人把它划成五层、四层:<ul>
-<li>七层划分为：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层。</li>
-<li>五层划分为：应用层、传输层、网络层、数据链路层、物理层。</li>
-<li>四层划分为：应用层、传输层、网络层、网络接口层。<br><img src="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-fd67af0a.png" alt></li>
-</ul>
-</li>
-</ul>
+        <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。</p>
+<p>假设项目以最常规的方式打包成一个整体的jar包部署，即配置文件和第三方依赖包都包含在jar包里，就会有如下两个问题：</p>
+<p>问题一：项目运行过程中，要改动配置文件的话需要重新打包并部署。</p>
+<p>问题二：多个第三方依赖包都相近的项目要部署在同一台服务器时，各自的jar包都包含了相同的第三方依赖包（假设项目jar包有100M，第三方依赖包可能就占用了99M），这样第三方依赖包冗余造成了服务器资源的浪费以及降低了项目部署的效率。</p>
+<p>如果将各项目的配置文件、第三方依赖包都提取到jar包外统一管理，这样即提升了项目打包效率又节约了服务器的磁盘消耗，同时项目的运维也是非常方便的，改动了配置文件重启下服务就可以了，无需重新构建部署。</p>
+<p>下面是具体的实现方案</p>
 <ol>
-<li><p>物理层：</p>
-<blockquote>
-<p>字面意思解释：物理传输、硬件、物理特性。在深圳的你与北京的朋友聊天，你的电脑必须要能上网，物理体现是什么？是不是接一根网线，插个路由器，北京的朋友那边是不是也有根网线，也得插个路由器。也就是说计算机与计算机之间的通信，必须要有底层物理层方面的连通，就类似于你打电话，中间是不是必须得连电话线。</p>
-</blockquote>
+<li><p>配置文件统一管理</p>
+<ol>
+<li><p>springboot核心配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Springboot读取核心配置文件（application.properties）的优先级为</span><br><span class="line">Jar包同级目录的config目录</span><br><span class="line">Jar包同级目录</span><br><span class="line">classPath(即resources目录)的config目录</span><br><span class="line">classpath目录</span><br><span class="line">上面是springboot默认去拿自己的核心配置文件的优先级，还有一种最高优先级的方式是项目启动时通过命令的方式指定项目加载核心配置文件，命令如下</span><br><span class="line">java –jar -Dspring.config.location=xxx/xxx/xxxx.properties xxxx.jar</span><br><span class="line">如果Spring Boot在优先级更高的位置找到了配置，那么它会无视优先级更低的配置</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>数据链路层</p>
-<blockquote>
-<p>数据链路层就是来对电信号来做分组的。以前每个公司都有自己的分组方式，非常的乱，后来形成了统一的标准（标准就是协议），即以太网协议Ethernet。</p>
-<ul>
-<li>每一数据帧分成：报头head和数据data两部分<br><img src="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-5b304d82.png" alt></li>
-<li>head包含：（固定18个字节）<ul>
-<li>发送者（源地址，6个字节）</li>
-<li>接收者（目标地址，6个字节）</li>
-<li>数据类型（6个字节）</li>
-</ul>
-</li>
-<li>data包含：（最短46字节，最长1500字节）<ul>
-<li>数据包的具体内容<br>head长度+data长度=最短64字节，最长1518字节，超过最大限制就分片发送。</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</li>
-<li><p>传输层</p>
-<blockquote>
-<p>传输层的由来：网络层的ip帮我们区分子网，以太网层的mac帮我们找到主机，然后大家使用的都是应用程序，你的电脑上可能同时开启qq，暴风影音，等多个应用程序</p>
-</blockquote>
-</li>
-<li><p>应用层</p>
-<blockquote>
-<p>应用层由来：用户使用的都是应用程序，均工作于应用层，互联网是开发的，大家都可以开发自己的应用程序，数据多种多样，必须规定好数据的组织形式 。</p>
-</blockquote>
+<li><p>其他资源配置文件<br>上面描述的Springboot核心文件已经能够提取出jar包外进行管理了，但是还有其他一些业务上的配置文件，如数据源配置文件，公共资源定义配置文件（常量，FTP信息等），quartz定时器，日志等配置文件我们如何去提取出来并确保能在代码中引用到呢<br>我们知道Springboot项目可以通过注解方式来获取相关配置文件，所以我们也是通过注解方式让项目能够引用到jar包外部的配置文件的，如下图：<br><img src="assets/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-0d6a5f0f.png" alt></p>
 </li>
 </ol>
-<h5 id="OSI七层协议模型"><a href="#OSI七层协议模型" class="headerlink" title="OSI七层协议模型"></a>OSI七层协议模型</h5><p><img src="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%B8%89%E7%AF%87%E3%80%81OSI%E4%B8%83%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%A7%A3%E8%AF%BB-22d0675f.png" alt></p>
+</li>
+</ol>
 
       
     </div>
@@ -415,7 +381,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://1445103710.github.io/2019/10/08/第三篇、OSI七层协议大白话解读/" title="第三篇、OSI七层协议大白话解读" target="_blank" rel="external">http://1445103710.github.io/2019/10/08/第三篇、OSI七层协议大白话解读/</a>
+      <a href="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/" title="第五篇、springboot项目实现jar包外配置文件管理" target="_blank" rel="external">http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -461,13 +427,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/10/12/第四篇、简易安装oracle客户端/" title="第四篇、简易安装oracle客户端"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/09/27/第二篇、oauth2的Authorization-Code/" title="第二篇、oauth2 [Authorization-Code]"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/10/12/第四篇、简易安装oracle客户端/" title="第四篇、简易安装oracle客户端"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
