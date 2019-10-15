@@ -18,19 +18,19 @@
   
   
   <title>第五篇、springboot项目实现jar包外配置文件管理 | yaoyao的小屋</title>
-  <meta name="description" content="背景为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。 假设项目以最常规的方式打包成一个整体的jar包部署，即配置文件和第三方依赖包都包含在jar包里，就会有如下两个问题： 问题一：项目运行过程中，要改动配置文件的话需要重新打包并部署。 问题二：多个第三方依">
+  <meta name="description" content="背景为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第五篇、springboot项目实现jar包外配置文件管理">
 <meta property="og:url" content="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/index.html">
 <meta property="og:site_name" content="yaoyao的小屋">
-<meta property="og:description" content="背景为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。 假设项目以最常规的方式打包成一个整体的jar包部署，即配置文件和第三方依赖包都包含在jar包里，就会有如下两个问题： 问题一：项目运行过程中，要改动配置文件的话需要重新打包并部署。 问题二：多个第三方依">
+<meta property="og:description" content="背景为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-0d6a5f0f.png">
 <meta property="og:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-c919179f.png">
-<meta property="og:updated_time" content="2019-10-15T07:00:13.078Z">
+<meta property="og:updated_time" content="2019-10-15T07:02:23.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第五篇、springboot项目实现jar包外配置文件管理">
-<meta name="twitter:description" content="背景为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。 假设项目以最常规的方式打包成一个整体的jar包部署，即配置文件和第三方依赖包都包含在jar包里，就会有如下两个问题： 问题一：项目运行过程中，要改动配置文件的话需要重新打包并部署。 问题二：多个第三方依">
+<meta name="twitter:description" content="背景为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。">
 <meta name="twitter:image" content="https://yaoyao-ali.oss-cn-beijing.aliyuncs.com/blog/%E7%AC%AC%E4%BA%94%E7%AF%87%E3%80%81springboot%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0jar%E5%8C%85%E5%A4%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-0d6a5f0f.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://1445103710.github.io/2019/10/15/第五篇、springboot项目实现jar包外配置文件管理/index.html">
@@ -357,6 +357,7 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>为实现快速搭建和开发，项目以Springboot框架搭建，springboot搭建的项目可以将项目直接打成jar包并运行，无需自己安装配置Tomcat或者其他服务器，是一种方便快捷的部署方式。</p>
+<a id="more"></a>
 <p>假设项目以最常规的方式打包成一个整体的jar包部署，即配置文件和第三方依赖包都包含在jar包里，就会有如下两个问题：</p>
 <p>问题一：项目运行过程中，要改动配置文件的话需要重新打包并部署。</p>
 <p>问题二：多个第三方依赖包都相近的项目要部署在同一台服务器时，各自的jar包都包含了相同的第三方依赖包（假设项目jar包有100M，第三方依赖包可能就占用了99M），这样第三方依赖包冗余造成了服务器资源的浪费以及降低了项目部署的效率。</p>
