@@ -17,20 +17,20 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>第七篇、spring、springMvc、springBoot和springCloud的联系与区别 | yaoyao的小屋</title>
-  <meta name="description" content="spring大家族大家都很熟悉，给大家介绍下">
+  <title>第九篇、springboot-webflux切换容器方法 | yaoyao的小屋</title>
+  <meta name="description" content="Spring WebFlux支持Netty，Undertow，Tomcat，Jetty和Servlet 3.1+容器。他们都适用于一个通用的Reactive Streams API。Spring WebFlux编程模型基于该通用API。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第七篇、spring、springMvc、springBoot和springCloud的联系与区别">
-<meta property="og:url" content="http://1445103710.github.io/2019/10/17/第七篇、spring、springMvc、springBoot和springCloud的联系与区别/index.html">
+<meta property="og:title" content="第九篇、springboot-webflux切换容器方法">
+<meta property="og:url" content="http://1445103710.github.io/2019/10/22/第九篇、springboot-webflux切换容器方法/index.html">
 <meta property="og:site_name" content="yaoyao的小屋">
-<meta property="og:description" content="spring大家族大家都很熟悉，给大家介绍下">
+<meta property="og:description" content="Spring WebFlux支持Netty，Undertow，Tomcat，Jetty和Servlet 3.1+容器。他们都适用于一个通用的Reactive Streams API。Spring WebFlux编程模型基于该通用API。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-17T10:08:08.246Z">
+<meta property="og:updated_time" content="2019-10-22T07:18:14.760Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第七篇、spring、springMvc、springBoot和springCloud的联系与区别">
-<meta name="twitter:description" content="spring大家族大家都很熟悉，给大家介绍下">
+<meta name="twitter:title" content="第九篇、springboot-webflux切换容器方法">
+<meta name="twitter:description" content="Spring WebFlux支持Netty，Undertow，Tomcat，Jetty和Servlet 3.1+容器。他们都适用于一个通用的Reactive Streams API。Spring WebFlux编程模型基于该通用API。">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://1445103710.github.io/2019/10/17/第七篇、spring、springMvc、springBoot和springCloud的联系与区别/index.html">
+  <link rel="canonical" href="http://1445103710.github.io/2019/10/22/第九篇、springboot-webflux切换容器方法/index.html">
   
     <link rel="alternate" href="/atom.xml" title="yaoyao的小屋" type="application/atom+xml">
   
@@ -318,14 +318,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-第七篇、spring、springMvc、springBoot和springCloud的联系与区别" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-第九篇、springboot-webflux切换容器方法" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      第七篇、spring、springMvc、springBoot和springCloud的联系与区别
+      第九篇、springboot-webflux切换容器方法
     </h1>
   
 
@@ -333,8 +333,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/10/17/第七篇、spring、springMvc、springBoot和springCloud的联系与区别/" class="article-date">
-	  <time datetime="2019-10-17T10:01:07.000Z" itemprop="datePublished">2019-10-17</time>
+	<a href="/2019/10/22/第九篇、springboot-webflux切换容器方法/" class="article-date">
+	  <time datetime="2019-10-22T07:11:34.000Z" itemprop="datePublished">2019-10-22</time>
 	</a>
 </span>
         
@@ -347,36 +347,30 @@
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/10/17/第七篇、spring、springMvc、springBoot和springCloud的联系与区别/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/10/22/第九篇、springboot-webflux切换容器方法/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>spring大家族大家都很熟悉，给大家介绍下</p>
+        <p>Spring WebFlux支持Netty，Undertow，Tomcat，Jetty和Servlet 3.1+容器。他们都适用于一个通用的Reactive Streams API。Spring WebFlux编程模型基于该通用API。</p>
 <a id="more"></a>
-<h4 id="spring"><a href="#spring" class="headerlink" title="spring"></a>spring</h4><blockquote>
-<p>spring是一个一站式的轻量级的java开发框架，核心是控制反转（IOC）和面向切面（AOP），针对于开发的WEB层(springMvc)、业务层(Ioc)、持久层(jdbcTemplate)等都提供了多种配置解决方案；</p>
-</blockquote>
-<h3 id="springMvc"><a href="#springMvc" class="headerlink" title="springMvc"></a>springMvc</h3><blockquote>
-<p>springMvc属于一个企业WEB开发的MVC框架，涵盖面包括前端视图开发、文件配置、后台接口逻辑开发等，XML、config等配置相对比较繁琐复杂；</p>
-</blockquote>
-<h3 id="springBoot"><a href="#springBoot" class="headerlink" title="springBoot"></a>springBoot</h3><blockquote>
-<p>spring boot使用了默认大于配置的理念，集成了快速开发的spring多个插件，同时自动过滤不需要配置的多余的插件，简化了项目的开发配置流程，一定程度上取消xml配置，是一套快速配置开发的脚手架，能快速开发单个微服务；</p>
-</blockquote>
-<h3 id="springCloud"><a href="#springCloud" class="headerlink" title="springCloud"></a>springCloud</h3><blockquote>
-<p>spring cloud大部分的功能插件都是基于springBoot去实现的，springCloud关注于全局的微服务整合和管理，将多个springBoot单体微服务进行整合以及管理；  springCloud依赖于springBoot开发，而springBoot可以独立开发；</p>
-</blockquote>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
-<li><p>Spring 框架就像一个家族，有众多衍生产品例如 boot、security、jpa等等。但他们的基础都是Spring的ioc、aop等. ioc 提供了依赖注入的容器， aop解决了面向横切面编程，然后在此两者的基础上实现了其他延伸产品的高级功能；</p>
-</li>
-<li><p>springMvc是基于Servlet 的一个MVC框架主要解决WEB开发的问题，因为Spring的配置非常复杂，各种XML、JavaConfig、servlet处理起来比较繁琐；</p>
-</li>
-<li><p>为了简化开发者的使用，从而创造性地推出了springBoot框架，默认优于配置，简化了springMvc的配置流程；<br>但区别于springMvc的是，springBoot专注于微服务方面的接口开发，和前端解耦，虽然springBoot也可以做成springMvc前后台一起开发，但是这就有点不符合springBoot框架的初衷了；</p>
-</li>
-<li><p>对于springCloud框架来说，它和springBoot一样，注重的是微服务的开发，但是springCloud更关注的是全局微服务的整合和管理，相当于管理多个springBoot框架的单体微服务；\</p>
-</li>
-</ol>
+<p>Spring WebFlux 默认是使用 Netty 作为 Web 容器的。如果要切换 Web 容器，只需要在 Maven 中做一下配置即可。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-webflux<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-netty<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 添加 Undertow依赖 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &lt;dependency&gt;</span></span><br><span class="line"><span class="comment">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span></span><br><span class="line"><span class="comment">    &lt;artifactId&gt;spring-boot-starter-undertow&lt;/artifactId&gt;</span></span><br><span class="line"><span class="comment">&lt;/dependency&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &lt;dependency&gt;</span></span><br><span class="line"><span class="comment">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span></span><br><span class="line"><span class="comment">    &lt;artifactId&gt;spring-boot-starter-jetty&lt;/artifactId&gt;</span></span><br><span class="line"><span class="comment">&lt;/dependency&gt; --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>思路就是，先在 spring-boot-starter-webflux 容器中排除 netty 的 starter。然后添加需要的 Web 容器的 starter 即可。</p>
+<p>启动日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.   ____          _            __ _ _</span><br><span class="line">/\\ / ___&apos;_ __ _ _(_)_ __  __ _ \ \ \ \</span><br><span class="line">( ( )\___ | &apos;_ | &apos;_| | &apos;_ \/ _` | \ \ \ \</span><br><span class="line">\\/  ___)| |_)| | | | | || (_| |  ) ) ) )</span><br><span class="line">&apos;  |____| .__|_| |_|_| |_\__, | / / / /</span><br><span class="line">=========|_|==============|___/=/_/_/_/</span><br><span class="line">:: Spring Boot ::        (v2.2.0.RELEASE)</span><br><span class="line"></span><br><span class="line">2019-10-22 15:09:33.332  INFO 62240 --- [           main] c.y.s.SpringBootWebserviceApplication    : Starting SpringBootWebserviceApplication on yaoyaodeMacBook-Pro.local with PID 62240 (/Users/yaoyao/IdeaProjects/practise/spring-esb-test/spring-boot-webservice/target/classes started by yaoyao in /Users/yaoyao/IdeaProjects/practise/spring-esb-test)</span><br><span class="line">2019-10-22 15:09:33.334  INFO 62240 --- [           main] c.y.s.SpringBootWebserviceApplication    : No active profile set, falling back to default profiles: default</span><br><span class="line">2019-10-22 15:09:34.240  INFO 62240 --- [           main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port(s): 8081</span><br><span class="line">2019-10-22 15:09:34.243  INFO 62240 --- [           main] c.y.s.SpringBootWebserviceApplication    : Started SpringBootWebserviceApplication in 1.165 seconds (JVM running for 1.585)</span><br></pre></td></tr></table></figure>
+
+<p>注意<br>如果在使用中引入其他jar包中含有tomcat包。springboot会自动切换</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.cxf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cxf-spring-boot-starter-jaxws<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>启动日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.   ____          _            __ _ _</span><br><span class="line">/\\ / ___&apos;_ __ _ _(_)_ __  __ _ \ \ \ \</span><br><span class="line">( ( )\___ | &apos;_ | &apos;_| | &apos;_ \/ _` | \ \ \ \</span><br><span class="line">\\/  ___)| |_)| | | | | || (_| |  ) ) ) )</span><br><span class="line">&apos;  |____| .__|_| |_|_| |_\__, | / / / /</span><br><span class="line">=========|_|==============|___/=/_/_/_/</span><br><span class="line">:: Spring Boot ::        (v2.2.0.RELEASE)</span><br><span class="line"></span><br><span class="line">2019-10-22 15:16:57.017  INFO 63722 --- [           main] c.y.s.SpringBootWebserviceApplication    : Starting SpringBootWebserviceApplication on yaoyaodeMacBook-Pro.local with PID 63722 (/Users/yaoyao/IdeaProjects/practise/spring-esb-test/spring-boot-webservice/target/classes started by yaoyao in /Users/yaoyao/IdeaProjects/practise/spring-esb-test)</span><br><span class="line">2019-10-22 15:16:57.020  INFO 63722 --- [           main] c.y.s.SpringBootWebserviceApplication    : No active profile set, falling back to default profiles: default</span><br><span class="line">2019-10-22 15:16:57.990  INFO 63722 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)</span><br><span class="line">2019-10-22 15:16:58.001  INFO 63722 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]</span><br><span class="line">2019-10-22 15:16:58.001  INFO 63722 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]</span><br><span class="line">2019-10-22 15:16:58.089  INFO 63722 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext</span><br><span class="line">2019-10-22 15:16:58.089  INFO 63722 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1024 ms</span><br><span class="line">2019-10-22 15:16:58.363  INFO 63722 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService &apos;applicationTaskExecutor&apos;</span><br><span class="line">2019-10-22 15:16:58.675  INFO 63722 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path &apos;&apos;</span><br><span class="line">2019-10-22 15:16:58.678  INFO 63722 --- [           main] c.y.s.SpringBootWebserviceApplication    : Started SpringBootWebserviceApplication in 1.964 seconds (JVM running for 2.568)</span><br></pre></td></tr></table></figure>
+
+<p>需要将tomcat排除</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.cxf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cxf-spring-boot-starter-jaxws<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -386,7 +380,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://1445103710.github.io/2019/10/17/第七篇、spring、springMvc、springBoot和springCloud的联系与区别/" title="第七篇、spring、springMvc、springBoot和springCloud的联系与区别" target="_blank" rel="external">http://1445103710.github.io/2019/10/17/第七篇、spring、springMvc、springBoot和springCloud的联系与区别/</a>
+      <a href="http://1445103710.github.io/2019/10/22/第九篇、springboot-webflux切换容器方法/" title="第九篇、springboot-webflux切换容器方法" target="_blank" rel="external">http://1445103710.github.io/2019/10/22/第九篇、springboot-webflux切换容器方法/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -432,13 +426,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/10/18/第八篇、Redis配置文件/" title="第八篇、Redis配置文件"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/10/16/第六篇、springboot指定端口的三种方式/" title="第六篇、springboot指定端口的三种方式"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/10/18/第八篇、Redis配置文件/" title="第八篇、Redis配置文件"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
