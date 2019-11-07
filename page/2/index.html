@@ -17,20 +17,16 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>第十篇、springboot使用rabbitMQ | yaoyao的小屋</title>
-  <meta name="description" content="首先总结一句：RabbitMQ的性能相对来说更好更全面，是消息中间件的首选。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="第十篇、springboot使用rabbitMQ">
-<meta property="og:url" content="http://1445103710.github.io/2019/10/23/第十篇、springboot使用rabbitMQ/index.html">
+  <title>yaoyao的小屋</title>
+  <meta property="og:type" content="website">
+<meta property="og:title" content="yaoyao的小屋">
+<meta property="og:url" content="http://1445103710.github.io/page/2/index.html">
 <meta property="og:site_name" content="yaoyao的小屋">
-<meta property="og:description" content="首先总结一句：RabbitMQ的性能相对来说更好更全面，是消息中间件的首选。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-23T13:45:22.184Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第十篇、springboot使用rabbitMQ">
-<meta name="twitter:description" content="首先总结一句：RabbitMQ的性能相对来说更好更全面，是消息中间件的首选。">
+<meta name="twitter:title" content="yaoyao的小屋">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://1445103710.github.io/2019/10/23/第十篇、springboot使用rabbitMQ/index.html">
+  <link rel="canonical" href="http://1445103710.github.io/page/2/index.html">
   
     <link rel="alternate" href="/atom.xml" title="yaoyao的小屋" type="application/atom+xml">
   
@@ -315,17 +311,18 @@
 </aside>
 
   
+  <main class="main" role="main">
   
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-第十篇、springboot使用rabbitMQ" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+    <div class="content">
+  <article id="post-第一篇、oauth2的初识oauth2" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
-    <h1 class="article-title" itemprop="name">
-      第十篇、springboot使用rabbitMQ
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/27/第一篇、oauth2的初识oauth2/">第一篇、oauth2 [初识oauth2]</a>
     </h1>
   
 
@@ -333,8 +330,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/10/23/第十篇、springboot使用rabbitMQ/" class="article-date">
-	  <time datetime="2019-10-23T13:23:32.000Z" itemprop="datePublished">2019-10-23</time>
+	<a href="/2019/09/27/第一篇、oauth2的初识oauth2/" class="article-date">
+	  <time datetime="2019-09-27T07:08:47.000Z" itemprop="datePublished">2019-09-27</time>
 	</a>
 </span>
         
@@ -347,29 +344,18 @@
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/10/23/第十篇、springboot使用rabbitMQ/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/09/27/第一篇、oauth2的初识oauth2/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>首先总结一句：RabbitMQ的性能相对来说更好更全面，是消息中间件的首选。</p>
-<a id="more"></a>
-
-<p>springboot当中整合使用RabbitMQ</p>
-<ol>
-<li><p>导入maven依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在application.properties文件当中引入RabbitMQ基本的配置信息</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#对于rabbitMQ的支持</span></span><br><span class="line"><span class="meta">spring.rabbitmq.host</span>=<span class="string">127.0.0.1</span></span><br><span class="line"><span class="meta">spring.rabbitmq.port</span>=<span class="string">5672</span></span><br><span class="line"><span class="meta">spring.rabbitmq.username</span>=<span class="string">guest</span></span><br><span class="line"><span class="meta">spring.rabbitmq.password</span>=<span class="string">guest</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编写RabbitConfig类，类里面设置很多个EXCHANGE,QUEUE,ROUTINGKEY，是为了接下来的不同使用场景。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Broker:它提供一种传输服务,它的角色就是维护一条从生产者到消费者的路线，保证数据能按照指定的方式进行传输,</span><br><span class="line">Exchange：消息交换机,它指定消息按什么规则,路由到哪个队列。</span><br><span class="line">Queue:消息的载体,每个消息都会被投到一个或多个队列。</span><br><span class="line">Binding:绑定，它的作用就是把exchange和queue按照路由规则绑定起来.</span><br><span class="line">Routing Key:路由关键字,exchange根据这个关键字进行消息投递。</span><br><span class="line">vhost:虚拟主机,一个broker里可以有多个vhost，用作不同用户的权限分离。</span><br><span class="line">Producer:消息生产者,就是投递消息的程序.</span><br><span class="line">Consumer:消息消费者,就是接受消息的程序.</span><br><span class="line">Channel:消息通道,在客户端的每个连接里,可建立多个channel.</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-
+        <p>oauth2是开放授权的一个标准，旨在让用户允许第三方应用去访问改用户在某服务器中的特定私有资源，而可以不提供其在某服务器的账号密码给到第三方应用</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/27/第一篇、oauth2的初识oauth2/#more">Read More</a>
+          </p>
+        
       
     </div>
     <div class="article-footer">
@@ -378,7 +364,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://1445103710.github.io/2019/10/23/第十篇、springboot使用rabbitMQ/" title="第十篇、springboot使用rabbitMQ" target="_blank" rel="external">http://1445103710.github.io/2019/10/23/第十篇、springboot使用rabbitMQ/</a>
+      <a href="http://1445103710.github.io/2019/09/27/第一篇、oauth2的初识oauth2/" title="第一篇、oauth2 [初识oauth2]" target="_blank" rel="external">http://1445103710.github.io/2019/09/27/第一篇、oauth2的初识oauth2/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -408,94 +394,37 @@
     </div>
   </article>
   
-    
-  <section id="comments">
-  	
-      <div id="vcomments"></div>
-    
-  </section>
-
-
-  
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
   
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/2019/11/07/第十一篇、分享java核心知识整理/" title="第十一篇、分享java核心知识整理.md"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/2019/10/22/第九篇、springboot-webflux切换容器方法/" title="第九篇、springboot-webflux切换容器方法"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-  </ul>
+
   
-  
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
-  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
-    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
-  </div> -->
-  
-  
-  <div class="bar-right">
     
-    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
-    
-  </div>
-  </div>
-</nav>
-  
-<!-- Modal -->
-<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content donate">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="modal-body">
-        <div class="donate-box">
-          <div class="donate-head">
-            <p>感谢您的支持，我会继续努力的!</p>
-          </div>
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
-              <div class="donate-payimg">
-                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
-              </div>
-              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
-              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
-              <div class="donate-payimg">
-                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
-              </div>
-              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
-              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
-            </div>
-          </div>
-          <div class="donate-footer">
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
-              </li>
-              <li role="presentation" class="">
-                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
-              </li>
-            </ul>
-          </div>
+    <nav class="bar bar-footer clearfix" data-stick-bottom>
+        <div class="bar-inner">
+        <ul class="pager pull-left">
+            
+            <li class="prev">
+                <a href="/">
+                    <i class="icon icon-angle-left"></i>
+                    上一页
+                </a>
+            </li>
+            
+            
+            <li class="next disabled">
+                <a href="javascript:;">
+                    下一页
+                    <i class="icon icon-angle-right"></i>                    
+                </a>
+            </li>
+            
+        </ul>
+        <div class="total-article bar-right">Page 2 of 2</div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
+    </nav>
+    
+ 
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -546,33 +475,6 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
    
 
 
-
-
-   
-    
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/valine"></script>
-  <script type="text/javascript">
-  var GUEST = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link';
-  meta = meta.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#vcomments',
-    verify: false,
-    notify: false,
-    appId: '',
-    appKey: '',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: meta,
-    pageSize: '10' || 10,
-    visitor: false
-  });
-  </script>
-
-     
 
 
 
