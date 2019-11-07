@@ -18,17 +18,17 @@
   
   
   <title>第十二篇、使用hsf泛化调用第一次找不到落地地址的问题 | yaoyao的小屋</title>
-  <meta name="description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can’t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 Gro">
+  <meta name="description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错HSF-0001">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第十二篇、使用hsf泛化调用第一次找不到落地地址的问题">
 <meta property="og:url" content="http://1445103710.github.io/2019/11/07/第十二篇、使用hsf泛化调用第一次找不到落地地址的问题/index.html">
 <meta property="og:site_name" content="yaoyao的小屋">
-<meta property="og:description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can’t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 Gro">
+<meta property="og:description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错HSF-0001">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-07T10:13:57.224Z">
+<meta property="og:updated_time" content="2019-11-07T10:16:02.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第十二篇、使用hsf泛化调用第一次找不到落地地址的问题">
-<meta name="twitter:description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can’t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 Gro">
+<meta name="twitter:description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错HSF-0001">
   <!-- Canonical links -->
   <link rel="canonical" href="http://1445103710.github.io/2019/11/07/第十二篇、使用hsf泛化调用第一次找不到落地地址的问题/index.html">
   
@@ -353,14 +353,14 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错<br>【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can’t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 Group:222 ERR-CODE: [HSF0001], Type: [BIZ], More: [<a href="http://edas.console.aliyun.com/code?faq=HSF-0001]】" target="_blank" rel="noopener">http://edas.console.aliyun.com/code?faq=HSF-0001]】</a></p>
+        <p>我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错HSF-0001</p>
 <!-- More -- >
 
 神奇
 
 咋回事呢
 
-看下文档\
+看下文档
 
 按照官方文档配置没问题啊
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实例化并配置 Consumer Bean</span></span><br><span class="line">HSFApiConsumerBean hsfApiConsumerBean = <span class="keyword">new</span> HSFApiConsumerBean();</span><br><span class="line">hsfApiConsumerBean.setInterfaceName(<span class="string">"com.taobao.hsf.test.HelloWorldService"</span>);</span><br><span class="line">hsfApiConsumerBean.setVersion(<span class="string">"1.0.0"</span>);</span><br><span class="line">hsfApiConsumerBean.setGroup(<span class="string">"HSF"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化 Consumer Bean，订阅服务</span></span><br><span class="line"><span class="comment">// true 表示等待地址推送（超时时间为 3000 毫秒），默认为 false（异步）</span></span><br><span class="line">hsfApiConsumerBean.init(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取 HSF 代理</span></span><br><span class="line">HelloWorldService helloWorldService = (HelloWorldService) hsfApiConsumerBean.getObject();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发起 HSF 调用</span></span><br><span class="line">String helloStr = helloWorldService.sayHello(<span class="string">"Li Lei"</span>);</span><br></pre></td></tr></table></figure>
