@@ -18,17 +18,17 @@
   
   
   <title>第十二篇、使用hsf泛化调用第一次找不到落地地址的问题 | yaoyao的小屋</title>
-  <meta name="description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错 1【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can&apos;t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 G">
+  <meta name="description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can’t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 Gro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第十二篇、使用hsf泛化调用第一次找不到落地地址的问题">
 <meta property="og:url" content="http://1445103710.github.io/2019/11/07/第十二篇、使用hsf泛化调用第一次找不到落地地址的问题/index.html">
 <meta property="og:site_name" content="yaoyao的小屋">
-<meta property="og:description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错 1【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can&apos;t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 G">
+<meta property="og:description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can’t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 Gro">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-07T10:12:09.878Z">
+<meta property="og:updated_time" content="2019-11-07T10:13:57.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第十二篇、使用hsf泛化调用第一次找不到落地地址的问题">
-<meta name="twitter:description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错 1【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can&apos;t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 G">
+<meta name="twitter:description" content="我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can’t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 Gro">
   <!-- Canonical links -->
   <link rel="canonical" href="http://1445103710.github.io/2019/11/07/第十二篇、使用hsf泛化调用第一次找不到落地地址的问题/index.html">
   
@@ -353,9 +353,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can<span class="string">'t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 Group:222 ERR-CODE: [HSF0001], Type: [BIZ], More: [http://edas.console.aliyun.com/code?faq=HSF-0001]】</span></span><br></pre></td></tr></table></figure>
-
+        <p>我们使用泛化调用的时候，调用hsf服务。再我们重启之后调用服务第一次会报错<br>【HSFServiceAddressNotFoundException-\nerror message : [HSF-Consumer]can’t find target service addresses, target serviceName:com.aliware.edas.Echo2Service:1.0.0 Group:222 ERR-CODE: [HSF0001], Type: [BIZ], More: [<a href="http://edas.console.aliyun.com/code?faq=HSF-0001]】" target="_blank" rel="noopener">http://edas.console.aliyun.com/code?faq=HSF-0001]】</a></p>
 <!-- More -- >
 
 神奇
@@ -375,7 +373,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置同步等待 ConfigServer 推送地址的时间（单位：毫秒），从而避免因地址还未推送到就发起服务调用造成的 HSFAddressNotFoundException。一般建议设置为 5000 毫秒，即可满足推送等待时间。</span><br></pre></td></tr></table></figure>
 
 <p>设置方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> HSFApiConsumerBean consumerBean = <span class="keyword">new</span> HSFApiConsumerBean();</span><br><span class="line">       consumerBean.setInterfaceName(interfaceName);</span><br><span class="line">       consumerBean.setGeneric(<span class="string">"true"</span>);</span><br><span class="line">       consumerBean.setVersion(version);</span><br><span class="line">       consumerBean.setGroup(groupName);</span><br><span class="line">       consumerBean.setClientTimeout(clientTimeout);</span><br><span class="line">       consumerBean.setMaxWaitTimeForCsAddress(maxWaitTimeForCsAddress);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> HSFApiConsumerBean consumerBean = <span class="keyword">new</span> HSFApiConsumerBean();</span><br><span class="line">       consumerBean.setInterfaceName(interfaceName);</span><br><span class="line">       consumerBean.setGeneric(<span class="string">"true"</span>);</span><br><span class="line">       consumerBean.setVersion(version);</span><br><span class="line">       consumerBean.setGroup(groupName);</span><br><span class="line">       consumerBean.setClientTimeout(clientTimeout);</span><br><span class="line">       <span class="comment">//maxWaitTimeForCsAddress一般默认设置5000就足够了</span></span><br><span class="line">       consumerBean.setMaxWaitTimeForCsAddress(maxWaitTimeForCsAddress);</span><br></pre></td></tr></table></figure>
 
 <p>至此全部结束了。</p>
 <p>当然想看下hsf如何泛化调用<br>将 HSFConsumerBean 配置 generic 为 true，标识 HSF 客户端忽略加载不到接口的异常。</p>
